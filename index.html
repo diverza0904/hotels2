@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Hotel Narayan Palace | CRCG+M4 Ajeetgarh | 4.3★ Premium Stay & Restaurant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -36,19 +36,32 @@
         .map-container {
             position: relative;
         }
+        /* ADDED: Mobile header fix */
+        @media (max-width: 768px) {
+            .sticky-top-fix {
+                padding-top: 70px !important;
+            }
+            .hero-title {
+                font-size: 2.2rem !important;
+                line-height: 1.2 !important;
+            }
+            .hero-subtitle {
+                font-size: 1rem !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 text-slate-900 font-sans">
 
-    <!-- Enhanced Navigation with Gradient (SAME) -->
-    <nav class="bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 backdrop-blur-md shadow-lg p-4 sticky top-0 z-50 flex justify-between items-center px-6 md:px-12">
-        <div class="flex items-center gap-3">
-            <div class="bg-white p-2 rounded-lg text-orange-600 shadow-lg transform hover:rotate-12 transition">
-                <i class="fas fa-palace text-xl"></i>
+    <!-- Enhanced Navigation with Gradient - FIXED for mobile -->
+    <nav class="bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 backdrop-blur-md shadow-lg p-3 md:p-4 sticky top-0 z-50 flex justify-between items-center px-4 md:px-12">
+        <div class="flex items-center gap-2 md:gap-3">
+            <div class="bg-white p-1.5 md:p-2 rounded-lg text-orange-600 shadow-lg transform hover:rotate-12 transition">
+                <i class="fas fa-palace text-lg md:text-xl"></i>
             </div>
             <div>
-                <h1 class="text-xl font-black text-white leading-none">NARAYAN PALACE</h1>
-                <p class="text-[10px] font-bold text-yellow-200 tracking-widest uppercase">Since 2010 · 3-Star Hotel</p>
+                <h1 class="text-base md:text-xl font-black text-white leading-tight md:leading-none">NARAYAN PALACE</h1>
+                <p class="text-[8px] md:text-[10px] font-bold text-yellow-200 tracking-widest uppercase">Since 2010 · 3-Star Hotel</p>
             </div>
         </div>
         <div class="hidden md:flex gap-8 font-semibold text-sm uppercase tracking-wide text-white">
@@ -58,301 +71,317 @@
             <a href="#reviews" class="hover:text-yellow-200 transition relative group">Reviews<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-200 group-hover:w-full transition-all"></span></a>
             <a href="#contact" class="hover:text-yellow-200 transition relative group font-bold border-b-2 border-yellow-200">Location<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-200 group-hover:w-full transition-all"></span></a>
         </div>
-        <a href="tel:+919950119140" class="bg-white text-orange-600 px-6 py-2.5 rounded-full text-sm font-bold shadow-lg hover:bg-yellow-400 hover:text-red-700 transition-all animate-pulse-gold flex items-center gap-2">
-            <i class="fas fa-phone-alt bg-orange-600 text-white p-1 rounded-full text-xs"></i>RESERVE NOW
+        <!-- ADDED: Mobile menu button (hamburger) -->
+        <button id="mobile-menu-btn" class="md:hidden text-white text-2xl">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a href="tel:+919950119140" class="bg-white text-orange-600 px-3 py-1.5 md:px-6 md:py-2.5 rounded-full text-xs md:text-sm font-bold shadow-lg hover:bg-yellow-400 hover:text-red-700 transition-all animate-pulse-gold flex items-center gap-1 md:gap-2">
+            <i class="fas fa-phone-alt bg-orange-600 text-white p-1 rounded-full text-xs"></i><span class="hidden xs:inline">RESERVE</span>
         </a>
     </nav>
 
-    <!-- Hero Section with Gradient Overlay - UPGRADED with Plus Code -->
-    <section id="home" class="relative h-[90vh] flex items-center justify-center overflow-hidden">
+    <!-- ADDED: Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gradient-to-r from-amber-600 to-orange-600 text-white py-4 px-6 fixed top-[60px] left-0 right-0 z-40 shadow-xl">
+        <div class="flex flex-col space-y-4">
+            <a href="#home" class="py-2 border-b border-white/20" onclick="closeMobileMenu()">🏠 Home</a>
+            <a href="#rooms" class="py-2 border-b border-white/20" onclick="closeMobileMenu()">🛏️ Stay</a>
+            <a href="#dining" class="py-2 border-b border-white/20" onclick="closeMobileMenu()">🍽️ Dining</a>
+            <a href="#reviews" class="py-2 border-b border-white/20" onclick="closeMobileMenu()">⭐ Reviews</a>
+            <a href="#contact" class="py-2 border-b border-white/20" onclick="closeMobileMenu()">📍 Location</a>
+            <a href="#booking" class="py-2 bg-yellow-400 text-orange-800 text-center rounded-full font-bold mt-2" onclick="closeMobileMenu()">📋 Book Now</a>
+        </div>
+    </div>
+
+    <!-- Hero Section with Gradient Overlay - FIXED mobile text size -->
+    <section id="home" class="relative min-h-[80vh] md:h-[90vh] flex items-center justify-center overflow-hidden pt-16 md:pt-0">
         <div class="absolute inset-0 bg-gradient-to-r from-red-900/70 via-orange-800/60 to-amber-900/70 z-10"></div>
         <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?q=80&w=2000&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover scale-105 animate-slow-zoom" alt="Hotel Narayan Palace Exterior">
         
-        <div class="relative z-20 text-center text-white px-6 max-w-5xl mx-auto">
-            <!-- UPGRADED: Added Plus Code Badge -->
-            <div class="flex justify-center gap-2 mb-4">
-                <span class="bg-gradient-to-r from-yellow-400 to-amber-500 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest inline-block shadow-lg animate-bounce-slow">⭐ 4.3 ★ (677 Google Reviews) ⭐</span>
-                <span class="bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-mono border border-white/30 hidden md:inline-block"><i class="fas fa-map-pin text-orange-400 mr-1"></i>CRCG+M4</span>
+        <div class="relative z-20 text-center text-white px-4 md:px-6 max-w-5xl mx-auto">
+            <!-- UPGRADED: Plus Code Badge - mobile optimized -->
+            <div class="flex flex-col sm:flex-row justify-center gap-2 mb-4">
+                <span class="bg-gradient-to-r from-yellow-400 to-amber-500 px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-bold uppercase tracking-widest inline-block shadow-lg animate-bounce-slow">⭐ 4.3 ★ (677 Reviews) ⭐</span>
+                <span class="bg-black/50 backdrop-blur-sm px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-mono border border-white/30 inline-block mx-auto sm:mx-0"><i class="fas fa-map-pin text-orange-400 mr-1"></i>CRCG+M4</span>
             </div>
-            <h2 class="text-5xl md:text-7xl font-black mb-6 leading-tight drop-shadow-2xl">Where Luxury Meets<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-200">Rajputana Hospitality</span></h2>
-            <!-- UPGRADED: Full Address with Plus Code -->
-            <p class="text-xl md:text-2xl mb-4 max-w-3xl mx-auto opacity-95 font-light drop-shadow-lg">Free WiFi · Swimming Pool · Free Parking · 24/7 Restaurant</p>
-            <p class="text-lg md:text-xl mb-6 bg-black/30 backdrop-blur-sm inline-block px-6 py-2 rounded-full"><i class="fas fa-location-dot text-yellow-300 mr-2"></i>CRCG+M4, Shahpura Rd, near Bus Stand, Ajeetgarh, Rajasthan 332701</p>
-            <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <a href="#rooms" class="bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 px-10 py-4 rounded-xl font-bold hover:from-white hover:to-yellow-200 transition-all shadow-2xl transform hover:scale-105">🛏️ Check Rooms & Prices</a>
+            <h2 class="hero-title text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6 leading-tight drop-shadow-2xl">Where Luxury Meets<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-200">Rajputana Hospitality</span></h2>
+            <!-- UPGRADED: Full Address with Plus Code - mobile optimized -->
+            <p class="hero-subtitle text-base md:text-xl lg:text-2xl mb-3 md:mb-4 max-w-3xl mx-auto opacity-95 font-light drop-shadow-lg px-2">Free WiFi · Swimming Pool · Free Parking · 24/7 Restaurant</p>
+            <p class="text-sm md:text-lg lg:text-xl mb-4 md:mb-6 bg-black/30 backdrop-blur-sm inline-block px-4 md:px-6 py-2 md:py-3 rounded-full max-w-[95%] mx-auto"><i class="fas fa-location-dot text-yellow-300 mr-2"></i>CRCG+M4, Shahpura Rd, near Bus Stand, Ajeetgarh 332701</p>
+            <div class="flex flex-col sm:flex-row gap-3 md:gap-5 justify-center px-2">
+                <a href="#rooms" class="bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 px-6 md:px-10 py-3 md:py-4 rounded-xl font-bold text-sm md:text-base hover:from-white hover:to-yellow-200 transition-all shadow-2xl transform hover:scale-105">🛏️ Check Rooms & Prices</a>
                 <!-- UPGRADED: Directions link with Plus Code -->
-                <a href="https://www.google.com/maps/dir/?api=1&destination=CRCG%2BM4+Ajeetgarh" target="_blank" class="bg-white/20 backdrop-blur-md text-white px-10 py-4 rounded-xl font-bold flex items-center justify-center gap-3 shadow-2xl border-2 border-white/30 hover:bg-white/30 transition transform hover:scale-105">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=CRCG%2BM4+Ajeetgarh" target="_blank" class="bg-white/20 backdrop-blur-md text-white px-6 md:px-10 py-3 md:py-4 rounded-xl font-bold text-sm md:text-base flex items-center justify-center gap-2 md:gap-3 shadow-2xl border-2 border-white/30 hover:bg-white/30 transition transform hover:scale-105">
                     <i class="fas fa-location-dot text-yellow-300"></i> Get Directions
                 </a>
             </div>
-            <!-- Price Comparison Flash (SAME) -->
-            <div class="mt-12 flex flex-wrap gap-4 justify-center">
-                <span class="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm border border-white/20"><i class="fas fa-tag text-yellow-300"></i> MakeMyTrip ₹1,188</span>
-                <span class="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm border border-white/20"><i class="fas fa-tag text-yellow-300"></i> Agoda ₹1,482</span>
-                <span class="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm border border-white/20"><i class="fas fa-calendar-check text-yellow-300"></i> Free Cancellation</span>
+            <!-- Price Comparison Flash - mobile optimized -->
+            <div class="mt-8 md:mt-12 flex flex-wrap gap-2 md:gap-4 justify-center">
+                <span class="bg-black/30 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm border border-white/20"><i class="fas fa-tag text-yellow-300"></i> MakeMyTrip ₹1,188</span>
+                <span class="bg-black/30 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm border border-white/20"><i class="fas fa-tag text-yellow-300"></i> Agoda ₹1,482</span>
+                <span class="bg-black/30 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm border border-white/20"><i class="fas fa-calendar-check text-yellow-300"></i> Free Cancellation</span>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced Amenities Bar (SAME) -->
-    <section class="py-12 bg-gradient-to-r from-red-50 via-orange-50 to-amber-50">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4 px-6">
-            <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-orange-500">
-                <i class="fas fa-swimming-pool text-4xl text-blue-500 mb-3"></i>
-                <h4 class="font-bold text-sm">Swimming Pool</h4>
-                <p class="text-xs text-gray-500">Open 7am-8pm</p>
+    <!-- Enhanced Amenities Bar - FIXED grid for tablet -->
+    <section class="py-8 md:py-12 bg-gradient-to-r from-red-50 via-orange-50 to-amber-50">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 px-4 md:px-6">
+            <div class="text-center p-4 md:p-6 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-orange-500">
+                <i class="fas fa-swimming-pool text-2xl md:text-4xl text-blue-500 mb-2 md:mb-3"></i>
+                <h4 class="font-bold text-xs md:text-sm">Swimming Pool</h4>
+                <p class="text-[10px] md:text-xs text-gray-500">7am-8pm</p>
             </div>
-            <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-green-500">
-                <i class="fas fa-wifi text-4xl text-purple-500 mb-3"></i>
-                <h4 class="font-bold text-sm">Free Wi-Fi</h4>
-                <p class="text-xs text-gray-500">High Speed</p>
+            <div class="text-center p-4 md:p-6 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-green-500">
+                <i class="fas fa-wifi text-2xl md:text-4xl text-purple-500 mb-2 md:mb-3"></i>
+                <h4 class="font-bold text-xs md:text-sm">Free Wi-Fi</h4>
+                <p class="text-[10px] md:text-xs text-gray-500">High Speed</p>
             </div>
-            <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-red-500">
-                <i class="fas fa-utensils text-4xl text-orange-600 mb-3"></i>
-                <h4 class="font-bold text-sm">Paid Breakfast</h4>
-                <p class="text-xs text-gray-500">7am-10am</p>
+            <div class="text-center p-4 md:p-6 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-red-500">
+                <i class="fas fa-utensils text-2xl md:text-4xl text-orange-600 mb-2 md:mb-3"></i>
+                <h4 class="font-bold text-xs md:text-sm">Paid Breakfast</h4>
+                <p class="text-[10px] md:text-xs text-gray-500">7am-10am</p>
             </div>
-            <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-yellow-500">
-                <i class="fas fa-pump-soap text-4xl text-green-600 mb-3"></i>
-                <h4 class="font-bold text-sm">Laundry</h4>
-                <p class="text-xs text-gray-500">Same Day</p>
+            <div class="text-center p-4 md:p-6 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-yellow-500">
+                <i class="fas fa-pump-soap text-2xl md:text-4xl text-green-600 mb-2 md:mb-3"></i>
+                <h4 class="font-bold text-xs md:text-sm">Laundry</h4>
+                <p class="text-[10px] md:text-xs text-gray-500">Same Day</p>
             </div>
-            <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-indigo-500">
-                <i class="fas fa-shield-alt text-4xl text-indigo-600 mb-3"></i>
-                <h4 class="font-bold text-sm">CCTV Secure</h4>
-                <p class="text-xs text-gray-500">24/7 Safety</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW SECTION: Location Overview with Plus Code -->
-    <section class="py-8 bg-white border-y border-orange-200">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-wrap items-center justify-between gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-map-pin text-orange-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <span class="text-sm text-gray-500">Exact Location</span>
-                        <p class="font-bold text-lg"><span class="text-orange-600 font-mono">CRCG+M4</span> Ajeetgarh, Rajasthan</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-road text-orange-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <span class="text-sm text-gray-500">Street</span>
-                        <p class="font-bold">On, Shahpura Rd</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-store text-orange-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <span class="text-sm text-gray-500">Landmark</span>
-                        <p class="font-bold">Near Bus Stand</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                        <i class="fas fa-mail-bulk text-orange-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <span class="text-sm text-gray-500">Pincode</span>
-                        <p class="font-bold">332701</p>
-                    </div>
-                </div>
+            <div class="text-center p-4 md:p-6 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-indigo-500 col-span-2 sm:col-span-1 mx-auto w-full sm:w-auto">
+                <i class="fas fa-shield-alt text-2xl md:text-4xl text-indigo-600 mb-2 md:mb-3"></i>
+                <h4 class="font-bold text-xs md:text-sm">CCTV Secure</h4>
+                <p class="text-[10px] md:text-xs text-gray-500">24/7 Safety</p>
             </div>
         </div>
     </section>
 
-    <!-- Rooms Section (SAME) -->
-    <section id="rooms" class="py-24 px-6 bg-gradient-to-b from-white to-orange-50">
+    <!-- Location Overview with Plus Code - FIXED wrapping for mobile -->
+    <section class="py-6 md:py-8 bg-white border-y border-orange-200">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="flex items-center gap-3 p-2">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-map-pin text-orange-600 text-lg md:text-xl"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <span class="text-xs md:text-sm text-gray-500">Exact Location</span>
+                        <p class="font-bold text-sm md:text-lg truncate"><span class="text-orange-600 font-mono">CRCG+M4</span></p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-2">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-road text-orange-600 text-lg md:text-xl"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <span class="text-xs md:text-sm text-gray-500">Street</span>
+                        <p class="font-bold text-sm md:text-lg truncate">Shahpura Rd</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-2">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-store text-orange-600 text-lg md:text-xl"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <span class="text-xs md:text-sm text-gray-500">Landmark</span>
+                        <p class="font-bold text-sm md:text-lg truncate">Near Bus Stand</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-2">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-mail-bulk text-orange-600 text-lg md:text-xl"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <span class="text-xs md:text-sm text-gray-500">Pincode</span>
+                        <p class="font-bold text-sm md:text-lg">332701</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section - FIXED image sizes and spacing -->
+    <section id="rooms" class="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-b from-white to-orange-50">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-2 rounded-full text-sm font-bold inline-block mb-4">🛌 LUXURY STAYS</span>
-                <h3 class="text-4xl md:text-5xl font-black text-slate-800 mb-4">Premium Accommodations</h3>
-                <p class="text-xl text-orange-600 font-semibold">Starting from ₹1,188/night · Free cancellation available</p>
+            <div class="text-center mb-8 md:mb-12">
+                <span class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-bold inline-block mb-3 md:mb-4">🛌 LUXURY STAYS</span>
+                <h3 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-800 mb-2 md:mb-4 px-2">Premium Accommodations</h3>
+                <p class="text-lg md:text-xl text-orange-600 font-semibold">Starting from ₹1,188/night · Free cancellation</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <!-- Deluxe Room -->
-                <div class="room-card bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-orange-100 transform hover:-translate-y-3 transition-all duration-300">
+                <div class="room-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-orange-100 transform hover:-translate-y-3 transition-all duration-300">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800" class="w-full h-64 object-cover">
-                        <span class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">FREE CANCELLATION</span>
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800" class="w-full h-48 md:h-56 lg:h-64 object-cover" loading="lazy">
+                        <span class="absolute top-3 right-3 bg-green-500 text-white px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold">FREE CANCELLATION</span>
                     </div>
-                    <div class="p-6">
+                    <div class="p-4 md:p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <h4 class="text-2xl font-bold">Deluxe AC Room</h4>
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">4.3 ★</span>
+                            <h4 class="text-xl md:text-2xl font-bold">Deluxe AC Room</h4>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold">4.3 ★</span>
                         </div>
-                        <p class="text-slate-500 text-sm mb-4"><i class="fas fa-tv text-orange-500 mr-1"></i> Smart LED · <i class="fas fa-bath text-orange-500 mr-1"></i> Attached Bath · <i class="fas fa-wind text-orange-500 mr-1"></i> AC</p>
-                        <div class="bg-orange-50 p-4 rounded-xl mb-4">
-                            <div class="flex justify-between items-center text-sm">
+                        <p class="text-slate-500 text-xs md:text-sm mb-3 md:mb-4"><i class="fas fa-tv text-orange-500 mr-1"></i> Smart LED · <i class="fas fa-bath text-orange-500 mr-1"></i> Attached Bath · <i class="fas fa-wind text-orange-500 mr-1"></i> AC</p>
+                        <div class="bg-orange-50 p-3 md:p-4 rounded-lg md:rounded-xl mb-3 md:mb-4">
+                            <div class="flex justify-between items-center text-xs md:text-sm">
                                 <span>MakeMyTrip</span>
-                                <span class="font-black text-lg">₹1,188</span>
+                                <span class="font-black text-base md:text-lg">₹1,188</span>
                             </div>
-                            <div class="flex justify-between items-center text-sm mt-2">
+                            <div class="flex justify-between items-center text-xs md:text-sm mt-1 md:mt-2">
                                 <span>Agoda</span>
-                                <span class="font-black text-lg">₹1,482</span>
+                                <span class="font-black text-base md:text-lg">₹1,482</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-3xl font-black text-orange-600">₹1,188<small class="text-sm text-gray-400 font-normal">/night</small></span>
-                            <button onclick="bookViaWA('Deluxe AC Room')" class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 rounded-xl font-bold hover:from-orange-700 hover:to-red-700 transition shadow-lg flex items-center gap-2">
-                                <i class="fab fa-whatsapp"></i> Book Now
+                            <span class="text-2xl md:text-3xl font-black text-orange-600">₹1,188<small class="text-xs md:text-sm text-gray-400 font-normal ml-1">/night</small></span>
+                            <button onclick="bookViaWA('Deluxe AC Room')" class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl font-bold text-xs md:text-sm hover:from-orange-700 hover:to-red-700 transition shadow-lg flex items-center gap-1 md:gap-2">
+                                <i class="fab fa-whatsapp"></i> <span class="hidden xs:inline">Book</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Super Deluxe -->
-                <div class="room-card bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-orange-100 transform hover:-translate-y-3 transition-all duration-300">
+                <div class="room-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-orange-100 transform hover:-translate-y-3 transition-all duration-300">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4df85b?q=80&w=800" class="w-full h-64 object-cover">
-                        <span class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-bold">BEST VIEW</span>
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4df85b?q=80&w=800" class="w-full h-48 md:h-56 lg:h-64 object-cover" loading="lazy">
+                        <span class="absolute top-3 right-3 bg-purple-500 text-white px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold">BEST VIEW</span>
                     </div>
-                    <div class="p-6">
+                    <div class="p-4 md:p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <h4 class="text-2xl font-bold">Super Deluxe</h4>
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">4.6 ★</span>
+                            <h4 class="text-xl md:text-2xl font-bold">Super Deluxe</h4>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold">4.6 ★</span>
                         </div>
-                        <p class="text-slate-500 text-sm mb-4"><i class="fas fa-mountain text-orange-500 mr-1"></i> Valley View · <i class="fas fa-bed text-orange-500 mr-1"></i> King Bed · <i class="fas fa-coffee text-orange-500 mr-1"></i> Tea Maker</p>
-                        <div class="bg-orange-50 p-4 rounded-xl mb-4">
-                            <div class="flex justify-between items-center text-sm">
+                        <p class="text-slate-500 text-xs md:text-sm mb-3 md:mb-4"><i class="fas fa-mountain text-orange-500 mr-1"></i> Valley View · <i class="fas fa-bed text-orange-500 mr-1"></i> King Bed · <i class="fas fa-coffee text-orange-500 mr-1"></i> Tea Maker</p>
+                        <div class="bg-orange-50 p-3 md:p-4 rounded-lg md:rounded-xl mb-3 md:mb-4">
+                            <div class="flex justify-between items-center text-xs md:text-sm">
                                 <span>MakeMyTrip</span>
-                                <span class="font-black text-lg">₹1,999</span>
+                                <span class="font-black text-base md:text-lg">₹1,999</span>
                             </div>
-                            <div class="flex justify-between items-center text-sm mt-2">
+                            <div class="flex justify-between items-center text-xs md:text-sm mt-1 md:mt-2">
                                 <span>Agoda</span>
-                                <span class="font-black text-lg">₹2,199</span>
+                                <span class="font-black text-base md:text-lg">₹2,199</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-3xl font-black text-orange-600">₹1,999<small class="text-sm text-gray-400 font-normal">/night</small></span>
-                            <button onclick="bookViaWA('Super Deluxe Room')" class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 rounded-xl font-bold hover:from-orange-700 hover:to-red-700 transition shadow-lg flex items-center gap-2">
-                                <i class="fab fa-whatsapp"></i> Book Now
+                            <span class="text-2xl md:text-3xl font-black text-orange-600">₹1,999<small class="text-xs md:text-sm text-gray-400 font-normal ml-1">/night</small></span>
+                            <button onclick="bookViaWA('Super Deluxe Room')" class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl font-bold text-xs md:text-sm hover:from-orange-700 hover:to-red-700 transition shadow-lg flex items-center gap-1 md:gap-2">
+                                <i class="fab fa-whatsapp"></i> <span class="hidden xs:inline">Book</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Family Suite -->
-                <div class="room-card bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-orange-100 transform hover:-translate-y-3 transition-all duration-300">
+                <div class="room-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-orange-100 transform hover:-translate-y-3 transition-all duration-300">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=800" class="w-full h-64 object-cover">
-                        <span class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold">FAMILY PACK</span>
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=800" class="w-full h-48 md:h-56 lg:h-64 object-cover" loading="lazy">
+                        <span class="absolute top-3 right-3 bg-yellow-500 text-white px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold">FAMILY PACK</span>
                     </div>
-                    <div class="p-6">
+                    <div class="p-4 md:p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <h4 class="text-2xl font-bold">Family Suite</h4>
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">4.8 ★</span>
+                            <h4 class="text-xl md:text-2xl font-bold">Family Suite</h4>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold">4.8 ★</span>
                         </div>
-                        <p class="text-slate-500 text-sm mb-4"><i class="fas fa-users text-orange-500 mr-1"></i> 4 Adults · <i class="fas fa-door-open text-orange-500 mr-1"></i> 2 Rooms · <i class="fas fa-utensils text-orange-500 mr-1"></i> Dining Area</p>
-                        <div class="bg-orange-50 p-4 rounded-xl mb-4">
-                            <div class="flex justify-between items-center text-sm">
+                        <p class="text-slate-500 text-xs md:text-sm mb-3 md:mb-4"><i class="fas fa-users text-orange-500 mr-1"></i> 4 Adults · <i class="fas fa-door-open text-orange-500 mr-1"></i> 2 Rooms · <i class="fas fa-utensils text-orange-500 mr-1"></i> Dining Area</p>
+                        <div class="bg-orange-50 p-3 md:p-4 rounded-lg md:rounded-xl mb-3 md:mb-4">
+                            <div class="flex justify-between items-center text-xs md:text-sm">
                                 <span>MakeMyTrip</span>
-                                <span class="font-black text-lg">₹2,999</span>
+                                <span class="font-black text-base md:text-lg">₹2,999</span>
                             </div>
-                            <div class="flex justify-between items-center text-sm mt-2">
+                            <div class="flex justify-between items-center text-xs md:text-sm mt-1 md:mt-2">
                                 <span>Agoda</span>
-                                <span class="font-black text-lg">₹3,199</span>
+                                <span class="font-black text-base md:text-lg">₹3,199</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-3xl font-black text-orange-600">₹2,999<small class="text-sm text-gray-400 font-normal">/night</small></span>
-                            <button onclick="bookViaWA('Family Suite')" class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 rounded-xl font-bold hover:from-orange-700 hover:to-red-700 transition shadow-lg flex items-center gap-2">
-                                <i class="fab fa-whatsapp"></i> Book Now
+                            <span class="text-2xl md:text-3xl font-black text-orange-600">₹2,999<small class="text-xs md:text-sm text-gray-400 font-normal ml-1">/night</small></span>
+                            <button onclick="bookViaWA('Family Suite')" class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl font-bold text-xs md:text-sm hover:from-orange-700 hover:to-red-700 transition shadow-lg flex items-center gap-1 md:gap-2">
+                                <i class="fab fa-whatsapp"></i> <span class="hidden xs:inline">Book</span>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <p class="text-center mt-8 text-sm text-gray-500"><i class="fas fa-info-circle text-orange-500"></i> Prices are indicative. Final price may vary based on seasonality.</p>
+            <p class="text-center mt-6 md:mt-8 text-xs md:text-sm text-gray-500"><i class="fas fa-info-circle text-orange-500"></i> Prices are indicative. Final price may vary based on seasonality.</p>
         </div>
     </section>
 
-    <!-- Dining Section (SAME) -->
-    <section id="dining" class="py-24 px-6 bg-gradient-to-br from-red-50 via-orange-50 to-amber-50">
+    <!-- Dining Section - FIXED grid for tablet -->
+    <section id="dining" class="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-br from-red-50 via-orange-50 to-amber-50">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-2 rounded-full text-sm font-bold inline-block mb-4">🍽️ 24/7 RESTAURANT</span>
-                <h3 class="text-4xl md:text-5xl font-black text-slate-800 mb-4">Pure Veg & Jain Food Available</h3>
-                <p class="text-xl text-green-600 font-semibold">Breakfast 7am-10am · Lunch 12pm-3pm · Dinner 7pm-11pm</p>
+            <div class="text-center mb-8 md:mb-12">
+                <span class="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-bold inline-block mb-3 md:mb-4">🍽️ 24/7 RESTAURANT</span>
+                <h3 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-800 mb-2 md:mb-4 px-2">Pure Veg & Jain Food Available</h3>
+                <p class="text-base md:text-xl text-green-600 font-semibold">Breakfast 7am-10am · Lunch 12pm-3pm · Dinner 7pm-11pm</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="group bg-white p-4 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
-                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=400" class="rounded-2xl mb-4 h-48 w-full object-cover group-hover:scale-105 transition duration-500">
-                    <h5 class="font-bold text-lg">Special Thali</h5>
-                    <p class="text-orange-600 font-black text-xl">₹180</p>
-                    <p class="text-xs text-gray-500">5 Roti + Dal + Rice + Sabzi</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+                <div class="group bg-white p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=400" class="rounded-xl md:rounded-2xl mb-2 md:mb-4 h-24 md:h-32 lg:h-40 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <h5 class="font-bold text-sm md:text-lg">Special Thali</h5>
+                    <p class="text-orange-600 font-black text-base md:text-xl">₹180</p>
+                    <p class="text-[10px] md:text-xs text-gray-500 truncate">5 Roti + Dal + Rice</p>
                 </div>
-                <div class="group bg-white p-4 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
-                    <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=400" class="rounded-2xl mb-4 h-48 w-full object-cover group-hover:scale-105 transition duration-500">
-                    <h5 class="font-bold text-lg">Paneer Butter Masala</h5>
-                    <p class="text-orange-600 font-black text-xl">₹220</p>
-                    <p class="text-xs text-gray-500">Creamy & Rich</p>
+                <div class="group bg-white p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=400" class="rounded-xl md:rounded-2xl mb-2 md:mb-4 h-24 md:h-32 lg:h-40 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <h5 class="font-bold text-sm md:text-lg">Paneer Butter</h5>
+                    <p class="text-orange-600 font-black text-base md:text-xl">₹220</p>
+                    <p class="text-[10px] md:text-xs text-gray-500">Creamy & Rich</p>
                 </div>
-                <div class="group bg-white p-4 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
-                    <img src="https://images.unsplash.com/photo-1585937421612-70a0f2455f75?q=80&w=400" class="rounded-2xl mb-4 h-48 w-full object-cover group-hover:scale-105 transition duration-500">
-                    <h5 class="font-bold text-lg">Dal Tadka</h5>
-                    <p class="text-orange-600 font-black text-xl">₹140</p>
-                    <p class="text-xs text-gray-500">Tempered with Ghee</p>
+                <div class="group bg-white p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1585937421612-70a0f2455f75?q=80&w=400" class="rounded-xl md:rounded-2xl mb-2 md:mb-4 h-24 md:h-32 lg:h-40 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <h5 class="font-bold text-sm md:text-lg">Dal Tadka</h5>
+                    <p class="text-orange-600 font-black text-base md:text-xl">₹140</p>
+                    <p class="text-[10px] md:text-xs text-gray-500">Tempered Ghee</p>
                 </div>
-                <div class="group bg-white p-4 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
-                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400" class="rounded-2xl mb-4 h-48 w-full object-cover group-hover:scale-105 transition duration-500">
-                    <h5 class="font-bold text-lg">Veg Pizza</h5>
-                    <p class="text-orange-600 font-black text-xl">₹299</p>
-                    <p class="text-xs text-gray-500">Cheese Burst</p>
+                <div class="group bg-white p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400" class="rounded-xl md:rounded-2xl mb-2 md:mb-4 h-24 md:h-32 lg:h-40 w-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    <h5 class="font-bold text-sm md:text-lg">Veg Pizza</h5>
+                    <p class="text-orange-600 font-black text-base md:text-xl">₹299</p>
+                    <p class="text-[10px] md:text-xs text-gray-500">Cheese Burst</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Reviews Section (SAME) -->
-    <section id="reviews" class="py-20 px-6 bg-white">
+    <!-- Reviews Section - FIXED spacing -->
+    <section id="reviews" class="py-16 md:py-20 px-4 md:px-6 bg-white">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h3 class="text-4xl font-black text-slate-800 mb-4">What Our Guests Say</h3>
-                <div class="flex items-center justify-center gap-2 text-3xl text-yellow-400 mb-2">
+            <div class="text-center mb-8 md:mb-12">
+                <h3 class="text-3xl md:text-4xl font-black text-slate-800 mb-2 md:mb-4">What Our Guests Say</h3>
+                <div class="flex items-center justify-center gap-1 md:gap-2 text-2xl md:text-3xl text-yellow-400 mb-2">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    <span class="text-2xl text-slate-700 ml-2">4.3 · 677 Google Reviews</span>
+                    <span class="text-xl md:text-2xl text-slate-700 ml-1 md:ml-2">4.3 · 677 Google Reviews</span>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-3xl shadow-lg border border-orange-100">
-                    <div class="flex text-yellow-400 text-xl mb-4">★★★★★</div>
-                    <p class="text-lg italic">"Very clean rooms and excellent service. Near bus stand so very convenient. The staff was very helpful."</p>
-                    <div class="mt-4 flex items-center gap-3">
-                        <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xl">R</div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+                <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-5 md:p-8 rounded-2xl md:rounded-3xl shadow-lg border border-orange-100">
+                    <div class="flex text-yellow-400 text-lg md:text-xl mb-2 md:mb-4">★★★★★</div>
+                    <p class="text-sm md:text-lg italic">"Very clean rooms and excellent service. Near bus stand so very convenient."</p>
+                    <div class="mt-3 md:mt-4 flex items-center gap-2 md:gap-3">
+                        <div class="w-8 h-8 md:w-12 md:h-12 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-xl">R</div>
                         <div>
-                            <p class="font-bold">Ramesh Kumar</p>
-                            <p class="text-sm text-gray-500">Feb 2025 · Family</p>
+                            <p class="font-bold text-sm md:text-base">Ramesh Kumar</p>
+                            <p class="text-[10px] md:text-xs text-gray-500">Feb 2025 · Family</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-3xl shadow-lg border border-orange-100">
-                    <div class="flex text-yellow-400 text-xl mb-4">★★★★☆</div>
-                    <p class="text-lg italic">"Pool was clean and well maintained. The breakfast was good. Will visit again."</p>
-                    <div class="mt-4 flex items-center gap-3">
-                        <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xl">P</div>
+                <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-5 md:p-8 rounded-2xl md:rounded-3xl shadow-lg border border-orange-100">
+                    <div class="flex text-yellow-400 text-lg md:text-xl mb-2 md:mb-4">★★★★☆</div>
+                    <p class="text-sm md:text-lg italic">"Pool was clean and well maintained. The breakfast was good. Will visit again."</p>
+                    <div class="mt-3 md:mt-4 flex items-center gap-2 md:gap-3">
+                        <div class="w-8 h-8 md:w-12 md:h-12 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-xl">P</div>
                         <div>
-                            <p class="font-bold">Priya Sharma</p>
-                            <p class="text-sm text-gray-500">Jan 2025 · Couple</p>
+                            <p class="font-bold text-sm md:text-base">Priya Sharma</p>
+                            <p class="text-[10px] md:text-xs text-gray-500">Jan 2025 · Couple</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-3xl shadow-lg border border-orange-100">
-                    <div class="flex text-yellow-400 text-xl mb-4">★★★★★</div>
-                    <p class="text-lg italic">"Best hotel in Ajeetgarh. Free parking and WiFi both worked great. Highly recommended!"</p>
-                    <div class="mt-4 flex items-center gap-3">
-                        <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xl">A</div>
+                <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-5 md:p-8 rounded-2xl md:rounded-3xl shadow-lg border border-orange-100">
+                    <div class="flex text-yellow-400 text-lg md:text-xl mb-2 md:mb-4">★★★★★</div>
+                    <p class="text-sm md:text-lg italic">"Best hotel in Ajeetgarh. Free parking and WiFi both worked great. Highly recommended!"</p>
+                    <div class="mt-3 md:mt-4 flex items-center gap-2 md:gap-3">
+                        <div class="w-8 h-8 md:w-12 md:h-12 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-xl">A</div>
                         <div>
-                            <p class="font-bold">Amit Singh</p>
-                            <p class="text-sm text-gray-500">Mar 2025 · Business</p>
+                            <p class="font-bold text-sm md:text-base">Amit Singh</p>
+                            <p class="text-[10px] md:text-xs text-gray-500">Mar 2025 · Business</p>
                         </div>
                     </div>
                 </div>
@@ -360,239 +389,223 @@
         </div>
     </section>
 
-    <!-- FAQ Section (SAME) -->
-    <section id="faq" class="py-20 px-6 bg-gradient-to-br from-orange-50 to-red-50">
+    <!-- FAQ Section - FIXED padding -->
+    <section id="faq" class="py-16 md:py-20 px-4 md:px-6 bg-gradient-to-br from-orange-50 to-red-50">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-2 rounded-full text-sm font-bold inline-block mb-4">❓ QUERY SOLVED</span>
-                <h3 class="text-4xl font-black text-slate-800 mb-4">Frequently Asked Questions</h3>
+            <div class="text-center mb-8 md:mb-12">
+                <span class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-bold inline-block mb-3 md:mb-4">❓ QUERY SOLVED</span>
+                <h3 class="text-3xl md:text-4xl font-black text-slate-800 mb-2 md:mb-4">Frequently Asked Questions</h3>
             </div>
-            <div class="space-y-4">
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <button class="faq-btn w-full text-left p-6 font-bold text-lg flex justify-between items-center hover:bg-orange-50 transition">
-                        <span><i class="fas fa-clock text-orange-600 mr-3"></i>What are check-in and check-out times?</span>
+            <div class="space-y-3 md:space-y-4">
+                <div class="bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden">
+                    <button class="faq-btn w-full text-left p-4 md:p-6 font-bold text-sm md:text-lg flex justify-between items-center hover:bg-orange-50 transition">
+                        <span><i class="fas fa-clock text-orange-600 mr-2 md:mr-3"></i>Check-in & check-out times?</span>
                         <i class="fas fa-chevron-down text-orange-600 transition-transform"></i>
                     </button>
-                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
-                        Check-in is from 12:00 PM onwards. Check-out is by 12:00 PM. Early check-in and late check-out subject to availability.
+                    <div class="faq-answer hidden p-4 md:p-6 pt-0 text-xs md:text-sm text-gray-600">
+                        Check-in: 12:00 PM, Check-out: 12:00 PM. Early/late subject to availability.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <button class="faq-btn w-full text-left p-6 font-bold text-lg flex justify-between items-center hover:bg-orange-50 transition">
-                        <span><i class="fas fa-car text-orange-600 mr-3"></i>Is parking available?</span>
+                <div class="bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden">
+                    <button class="faq-btn w-full text-left p-4 md:p-6 font-bold text-sm md:text-lg flex justify-between items-center hover:bg-orange-50 transition">
+                        <span><i class="fas fa-car text-orange-600 mr-2 md:mr-3"></i>Parking available?</span>
                         <i class="fas fa-chevron-down text-orange-600 transition-transform"></i>
                     </button>
-                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
-                        Yes, we offer free private parking for all our guests. The parking area is CCTV secured.
+                    <div class="faq-answer hidden p-4 md:p-6 pt-0 text-xs md:text-sm text-gray-600">
+                        Yes, free private parking for all guests. CCTV secured.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <button class="faq-btn w-full text-left p-6 font-bold text-lg flex justify-between items-center hover:bg-orange-50 transition">
-                        <span><i class="fas fa-utensils text-orange-600 mr-3"></i>Do you serve breakfast?</span>
+                <div class="bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden">
+                    <button class="faq-btn w-full text-left p-4 md:p-6 font-bold text-sm md:text-lg flex justify-between items-center hover:bg-orange-50 transition">
+                        <span><i class="fas fa-utensils text-orange-600 mr-2 md:mr-3"></i>Breakfast served?</span>
                         <i class="fas fa-chevron-down text-orange-600 transition-transform"></i>
                     </button>
-                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
-                        Yes, we offer paid breakfast from 7:00 AM to 10:00 AM. Both Indian and Continental options available.
+                    <div class="faq-answer hidden p-4 md:p-6 pt-0 text-xs md:text-sm text-gray-600">
+                        Yes, paid breakfast 7am-10am. Indian & Continental options.
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <button class="faq-btn w-full text-left p-6 font-bold text-lg flex justify-between items-center hover:bg-orange-50 transition">
-                        <span><i class="fas fa-wifi text-orange-600 mr-3"></i>Is WiFi free for guests?</span>
+                <div class="bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden">
+                    <button class="faq-btn w-full text-left p-4 md:p-6 font-bold text-sm md:text-lg flex justify-between items-center hover:bg-orange-50 transition">
+                        <span><i class="fas fa-wifi text-orange-600 mr-2 md:mr-3"></i>Free WiFi?</span>
                         <i class="fas fa-chevron-down text-orange-600 transition-transform"></i>
                     </button>
-                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
-                        Absolutely! We provide complimentary high-speed WiFi to all our guests throughout the property.
+                    <div class="faq-answer hidden p-4 md:p-6 pt-0 text-xs md:text-sm text-gray-600">
+                        Yes, complimentary high-speed WiFi throughout the property.
                     </div>
                 </div>
-                <!-- NEW FAQ: Location Question -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <button class="faq-btn w-full text-left p-6 font-bold text-lg flex justify-between items-center hover:bg-orange-50 transition">
-                        <span><i class="fas fa-map-pin text-orange-600 mr-3"></i>What is your exact location?</span>
+                <div class="bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden">
+                    <button class="faq-btn w-full text-left p-4 md:p-6 font-bold text-sm md:text-lg flex justify-between items-center hover:bg-orange-50 transition">
+                        <span><i class="fas fa-map-pin text-orange-600 mr-2 md:mr-3"></i>Exact location?</span>
                         <i class="fas fa-chevron-down text-orange-600 transition-transform"></i>
                     </button>
-                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
-                        Our exact location is <span class="font-bold">CRCG+M4 Ajeetgarh, Rajasthan</span>. We are located on Shahpura Road, near the Bus Stand, Ajeetgarh, Rajasthan 332701. You can easily find us on Google Maps with our Plus Code.
+                    <div class="faq-answer hidden p-4 md:p-6 pt-0 text-xs md:text-sm text-gray-600">
+                        <span class="font-bold">CRCG+M4 Ajeetgarh</span>, Shahpura Rd, near Bus Stand, Ajeetgarh 332701.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced Booking Form (SAME) -->
-    <section id="booking" class="py-20 bg-gradient-to-r from-orange-600 to-red-600 px-6">
+    <!-- Enhanced Booking Form - FIXED mobile padding -->
+    <section id="booking" class="py-16 md:py-20 bg-gradient-to-r from-orange-600 to-red-600 px-4 md:px-6">
         <div class="max-w-4xl mx-auto">
-            <div class="bg-white/10 backdrop-blur-lg p-8 rounded-3xl shadow-2xl border-2 border-white/20">
-                <h3 class="text-3xl font-black text-center text-white mb-6">📋 Quick Enquiry / Booking</h3>
-                <form id="bookingForm" class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" id="custName" placeholder="Your Full Name *" class="w-full p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white placeholder-white/70 focus:outline-none focus:border-yellow-300" required>
-                        <input type="tel" id="custPhone" placeholder="Mobile Number *" class="w-full p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white placeholder-white/70 focus:outline-none focus:border-yellow-300" required>
+            <div class="bg-white/10 backdrop-blur-lg p-5 md:p-8 rounded-2xl md:rounded-3xl shadow-2xl border-2 border-white/20">
+                <h3 class="text-2xl md:text-3xl font-black text-center text-white mb-4 md:mb-6">📋 Quick Enquiry / Booking</h3>
+                <form id="bookingForm" class="space-y-3 md:space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                        <input type="text" id="custName" placeholder="Your Full Name *" class="w-full p-3 md:p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white placeholder-white/70 text-sm md:text-base focus:outline-none focus:border-yellow-300" required>
+                        <input type="tel" id="custPhone" placeholder="Mobile Number *" class="w-full p-3 md:p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white placeholder-white/70 text-sm md:text-base focus:outline-none focus:border-yellow-300" required>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="date" id="checkIn" class="w-full p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white focus:outline-none focus:border-yellow-300">
-                        <input type="date" id="checkOut" class="w-full p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white focus:outline-none focus:border-yellow-300">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                        <input type="date" id="checkIn" class="w-full p-3 md:p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white text-sm md:text-base focus:outline-none focus:border-yellow-300">
+                        <input type="date" id="checkOut" class="w-full p-3 md:p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white text-sm md:text-base focus:outline-none focus:border-yellow-300">
                     </div>
-                    <select id="roomType" class="w-full p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white focus:outline-none focus:border-yellow-300">
+                    <select id="roomType" class="w-full p-3 md:p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white text-sm md:text-base focus:outline-none focus:border-yellow-300">
                         <option value="" class="text-gray-800">Select Room Type</option>
                         <option value="Deluxe" class="text-gray-800">Deluxe AC Room</option>
                         <option value="Super Deluxe" class="text-gray-800">Super Deluxe</option>
                         <option value="Family Suite" class="text-gray-800">Family Suite</option>
                     </select>
-                    <button type="submit" class="w-full bg-yellow-400 text-orange-800 font-bold py-4 rounded-xl hover:bg-yellow-300 transition shadow-lg text-lg transform hover:scale-105">
+                    <button type="submit" class="w-full bg-yellow-400 text-orange-800 font-bold py-3 md:py-4 rounded-xl hover:bg-yellow-300 transition shadow-lg text-base md:text-lg transform hover:scale-105">
                         <i class="fas fa-paper-plane mr-2"></i> Submit Enquiry
                     </button>
                 </form>
-                <p id="successMsg" class="text-green-300 font-bold text-center mt-4 hidden text-sm bg-green-900/30 p-3 rounded-xl">✓ Thank you! We'll contact you within 5 minutes on WhatsApp.</p>
+                <p id="successMsg" class="text-green-300 font-bold text-center mt-3 md:mt-4 hidden text-xs md:text-sm bg-green-900/30 p-2 md:p-3 rounded-xl">✓ Thank you! We'll contact you within 5 minutes on WhatsApp.</p>
             </div>
         </div>
     </section>
 
-    <!-- UPGRADED: Footer with Correct Location (CRCG+M4) and SATELLITE VIEW MAP -->
-    <footer id="contact" class="bg-gradient-to-b from-slate-900 to-slate-800 text-white py-16 px-6">
+    <!-- UPGRADED: Footer with Correct Location - FIXED map size -->
+    <footer id="contact" class="bg-gradient-to-b from-slate-900 to-slate-800 text-white py-12 md:py-16 px-4 md:px-6">
         <div class="max-w-7xl mx-auto">
             <!-- Location Alert Bar -->
-            <div class="bg-orange-600/30 border border-orange-500 rounded-full px-6 py-3 mb-8 text-center">
-                <i class="fas fa-map-pin text-orange-400 mr-2"></i>
+            <div class="bg-orange-600/30 border border-orange-500 rounded-full px-4 md:px-6 py-2 md:py-3 mb-6 md:mb-8 text-center text-xs md:text-sm">
+                <i class="fas fa-map-pin text-orange-400 mr-1 md:mr-2"></i>
                 <span class="font-mono font-bold text-orange-300">CRCG+M4 Ajeetgarh</span> 
-                <span class="text-gray-300">| On Shahpura Rd, near Bus Stand | Ajeetgarh, Rajasthan 332701</span>
+                <span class="text-gray-300 hidden sm:inline">| Shahpura Rd, near Bus Stand | 332701</span>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-12 mb-12">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 mb-8 md:mb-12">
                 <div>
-                    <h4 class="font-black text-3xl mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">NARAYAN PALACE</h4>
+                    <h4 class="font-black text-2xl md:text-3xl mb-3 md:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">NARAYAN PALACE</h4>
                     
-                    <!-- UPGRADED: Location Cards with Plus Code -->
-                    <div class="space-y-4 mb-6">
-                        <div class="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl">
-                            <div class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-map-code text-white"></i>
+                    <!-- Location Cards -->
+                    <div class="space-y-3 md:space-y-4 mb-4 md:mb-6">
+                        <div class="flex items-start gap-2 md:gap-3 bg-slate-800/50 p-3 md:p-4 rounded-lg md:rounded-xl">
+                            <div class="w-8 h-8 md:w-10 md:h-10 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-code text-white text-sm md:text-base"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-400">Plus Code (Exact Location)</p>
-                                <p class="font-bold text-xl font-mono text-orange-400">CRCG+M4 Ajeetgarh</p>
+                                <p class="text-xs md:text-sm text-gray-400">Plus Code</p>
+                                <p class="font-bold text-base md:text-xl font-mono text-orange-400">CRCG+M4 Ajeetgarh</p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl">
-                            <div class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-road text-white"></i>
+                        <div class="flex items-start gap-2 md:gap-3 bg-slate-800/50 p-3 md:p-4 rounded-lg md:rounded-xl">
+                            <div class="w-8 h-8 md:w-10 md:h-10 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-road text-white text-sm md:text-base"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-400">Street Address</p>
-                                <p class="font-bold">On, Shahpura Rd</p>
+                                <p class="text-xs md:text-sm text-gray-400">Street</p>
+                                <p class="font-bold text-sm md:text-base">On, Shahpura Rd</p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl">
-                            <div class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-store text-white"></i>
+                        <div class="flex items-start gap-2 md:gap-3 bg-slate-800/50 p-3 md:p-4 rounded-lg md:rounded-xl">
+                            <div class="w-8 h-8 md:w-10 md:h-10 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-store text-white text-sm md:text-base"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-400">Landmark</p>
-                                <p class="font-bold">Near Bus Stand, Ajeetgarh</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl">
-                            <div class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-mail-bulk text-white"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-400">Pincode</p>
-                                <p class="font-bold">Rajasthan 332701</p>
+                                <p class="text-xs md:text-sm text-gray-400">Landmark</p>
+                                <p class="font-bold text-sm md:text-base">Near Bus Stand</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Contact Info (SAME) -->
-                    <div class="space-y-3">
-                        <p class="flex items-center gap-3"><i class="fas fa-phone-alt text-orange-400 w-6"></i> <a href="tel:+919950119140" class="hover:text-orange-400">099501 19140</a></p>
-                        <p class="flex items-center gap-3"><i class="fas fa-envelope text-orange-400 w-6"></i> <a href="mailto:info@hotelnarayanpalace.com" class="hover:text-orange-400">info@hotelnarayanpalace.com</a></p>
-                        <p class="flex items-center gap-3"><i class="fas fa-clock text-orange-400 w-6"></i> Check-in: 12:00 PM · Check-out: 12:00 PM</p>
-                        <p class="flex items-center gap-3"><i class="fas fa-globe text-orange-400 w-6"></i> <a href="https://hnpajitgarh.com" target="_blank" class="hover:text-orange-400">hnpajitgarh.com</a></p>
+                    <!-- Contact Info -->
+                    <div class="space-y-2 md:space-y-3">
+                        <p class="flex items-center gap-2 md:gap-3 text-sm md:text-base"><i class="fas fa-phone-alt text-orange-400 w-4 md:w-6"></i> <a href="tel:+919950119140" class="hover:text-orange-400">099501 19140</a></p>
+                        <p class="flex items-center gap-2 md:gap-3 text-sm md:text-base"><i class="fas fa-clock text-orange-400 w-4 md:w-6"></i> Check-in: 12pm · Check-out: 12pm</p>
                     </div>
                     
-                    <!-- Social Links (SAME) -->
-                    <div class="flex gap-4 mt-6">
-                        <a href="#" class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-700 transition transform hover:scale-110"><i class="fab fa-facebook-f text-xl"></i></a>
-                        <a href="#" class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-700 transition transform hover:scale-110"><i class="fab fa-instagram text-xl"></i></a>
-                        <a href="https://wa.me/919950119140" class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-700 transition transform hover:scale-110"><i class="fab fa-whatsapp text-xl"></i></a>
+                    <!-- Social Links -->
+                    <div class="flex gap-2 md:gap-4 mt-4 md:mt-6">
+                        <a href="#" class="w-8 h-8 md:w-12 md:h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-700 transition transform hover:scale-110"><i class="fab fa-facebook-f text-sm md:text-xl"></i></a>
+                        <a href="#" class="w-8 h-8 md:w-12 md:h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-700 transition transform hover:scale-110"><i class="fab fa-instagram text-sm md:text-xl"></i></a>
+                        <a href="https://wa.me/919950119140" class="w-8 h-8 md:w-12 md:h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-700 transition transform hover:scale-110"><i class="fab fa-whatsapp text-sm md:text-xl"></i></a>
                     </div>
                 </div>
                 
-                <!-- UPGRADED: Map with SATELLITE VIEW and Plus Code -->
-                <div class="rounded-3xl overflow-hidden shadow-2xl h-96 border-4 border-orange-600/30 relative map-container">
+                <!-- Map Section - FIXED: width and height properly set -->
+                <div class="rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl h-64 md:h-96 border-4 border-orange-600/30 relative map-container mt-4 md:mt-0">
                     <!-- Satellite Badge -->
-                    <div class="satellite-badge">
-                        <i class="fas fa-satellite mr-1"></i> SATELLITE VIEW
+                    <div class="satellite-badge text-[10px] md:text-xs">
+                        <i class="fas fa-satellite mr-1"></i> SATELLITE
                     </div>
-                    <!-- Map with Satellite Layer & Correct Location -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3541.5268844894317!2d75.82273027524313!3d27.421685876347517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396d1b41cbf55d69%3A0xae65a522869008d3!2sHotel%20Narayan%20Palace!5e0!3m2!1sen!2sin!4v1773814255081!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <!-- Map Overlay Buttons -->
-                    <div class="absolute bottom-4 left-4 right-4 flex gap-2 justify-center">
-                        <a href="https://www.google.com/maps/search/?api=1&query=CRCG%2BM4+Ajeetgarh" target="_blank" class="bg-black/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm hover:bg-orange-600 transition flex items-center gap-1">
-                            <i class="fas fa-search"></i> Search
+                    <!-- Map with correct location - FIXED: width=100% height=100% -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3541.5268844894317!2d75.82273027524313!3d27.421685876347517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396d1b41cbf55d69%3A0xae65a522869008d3!2sHotel%20Narayan%20Palace!5e0!3m2!1sen!2sin!4v1773814255081!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <!-- Map Overlay Buttons - mobile optimized -->
+                    <div class="absolute bottom-2 md:bottom-4 left-2 right-2 md:left-4 md:right-4 flex gap-1 md:gap-2 justify-center flex-wrap">
+                        <a href="https://www.google.com/maps/search/?api=1&query=CRCG%2BM4+Ajeetgarh" target="_blank" class="bg-black/70 backdrop-blur-sm text-white px-2 md:px-4 py-1 md:py-2 rounded-full text-[10px] md:text-sm hover:bg-orange-600 transition flex items-center gap-1">
+                            <i class="fas fa-search"></i> <span class="hidden xs:inline">Search</span>
                         </a>
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=CRCG%2BM4+Ajeetgarh" target="_blank" class="bg-orange-600 text-white px-4 py-2 rounded-full text-sm hover:bg-orange-700 transition flex items-center gap-1">
-                            <i class="fas fa-directions"></i> Directions
-                        </a>
-                        <a href="https://www.google.com/maps/place/CRCG%2BM4+Ajeetgarh/@27.403928,75.7543091,18z/data=!4m5!3m4!1s0x396da78fbf1a5dad:0x39d400208bb996ea!8m2!3d27.403928!4d75.7543091" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition flex items-center gap-1">
-                            <i class="fas fa-map-pin"></i> Plus Code
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=CRCG%2BM4+Ajeetgarh" target="_blank" class="bg-orange-600 text-white px-2 md:px-4 py-1 md:py-2 rounded-full text-[10px] md:text-sm hover:bg-orange-700 transition flex items-center gap-1">
+                            <i class="fas fa-directions"></i> <span class="hidden xs:inline">Directions</span>
                         </a>
                     </div>
                 </div>
             </div>
             
-            <!-- Location Coordinates Bar -->
-            <div class="bg-slate-800 rounded-xl p-4 mb-6">
-                <div class="flex flex-wrap items-center justify-between gap-3">
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-satellite text-orange-400"></i>
-                        <span class="text-sm text-gray-400">Satellite View Active:</span>
-                        <span class="text-sm font-mono text-orange-300">27.403928° N, 75.754309° E</span>
-                    </div>
-                    <div class="flex items-center gap-2">
+            <!-- Location Coordinates Bar - mobile optimized -->
+            <div class="bg-slate-800 rounded-lg md:rounded-xl p-3 md:p-4 mb-4 md:mb-6">
+                <div class="flex flex-wrap items-center justify-center md:justify-between gap-2 md:gap-3 text-xs md:text-sm">
+                    <div class="flex items-center gap-1 md:gap-2">
                         <i class="fas fa-map-pin text-orange-400"></i>
-                        <span class="text-sm text-gray-400">Plus Code:</span>
-                        <span class="text-sm font-mono text-white bg-orange-600/30 px-2 py-1 rounded">CRCG+M4 Ajeetgarh</span>
+                        <span class="text-gray-400">CRCG+M4</span>
                     </div>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-1 md:gap-2">
                         <i class="fas fa-road text-orange-400"></i>
-                        <span class="text-sm text-gray-400">Landmark:</span>
-                        <span class="text-sm">Near Bus Stand</span>
+                        <span class="text-gray-400">Shahpura Rd</span>
+                    </div>
+                    <div class="flex items-center gap-1 md:gap-2">
+                        <i class="fas fa-store text-orange-400"></i>
+                        <span class="text-gray-400">Near Bus Stand</span>
+                    </div>
+                    <div class="flex items-center gap-1 md:gap-2">
+                        <i class="fas fa-mail-bulk text-orange-400"></i>
+                        <span class="text-gray-400">332701</span>
                     </div>
                 </div>
             </div>
             
-            <!-- Copyright (SAME) -->
-            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
-                <p>© 2025 Hotel Narayan Palace. All rights reserved. | CRCG+M4 Ajeetgarh, Shahpura Rd, Near Bus Stand, Rajasthan 332701</p>
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 pt-6 md:pt-8 text-center text-xs md:text-sm text-gray-400">
+                <p>© 2025 Hotel Narayan Palace | CRCG+M4 Ajeetgarh, Shahpura Rd, Near Bus Stand, Rajasthan 332701</p>
             </div>
         </div>
     </footer>
 
-    <!-- Enhanced Mobile Bottom Bar - UPGRADED with Plus Code -->
-    <div class="fixed bottom-6 left-4 right-4 h-16 bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl shadow-2xl flex items-center justify-between px-4 z-50 md:hidden border border-white/20 text-white backdrop-blur-lg">
+    <!-- Enhanced Mobile Bottom Bar - FIXED position and spacing -->
+    <div class="fixed bottom-4 left-4 right-4 h-14 md:h-16 bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl md:rounded-2xl shadow-2xl flex items-center justify-between px-3 md:px-4 z-50 md:hidden border border-white/20 text-white backdrop-blur-lg">
         <a href="tel:+919950119140" class="flex-1 flex flex-col items-center group">
-            <i class="fas fa-phone-alt text-green-400 group-hover:text-green-300 text-xl"></i>
-            <span class="text-[10px] uppercase mt-1 font-bold">CALL</span>
+            <i class="fas fa-phone-alt text-green-400 group-hover:text-green-300 text-lg md:text-xl"></i>
+            <span class="text-[8px] md:text-[10px] uppercase mt-0.5 font-bold">CALL</span>
         </a>
         <a href="https://wa.me/919950119140" class="flex-1 flex flex-col items-center group">
-            <i class="fab fa-whatsapp text-green-400 group-hover:text-green-300 text-xl"></i>
-            <span class="text-[10px] uppercase mt-1 font-bold">WHATSAPP</span>
+            <i class="fab fa-whatsapp text-green-400 group-hover:text-green-300 text-lg md:text-xl"></i>
+            <span class="text-[8px] md:text-[10px] uppercase mt-0.5 font-bold">WHATSAPP</span>
         </a>
-        <!-- UPGRADED: Directions with Plus Code -->
         <a href="https://www.google.com/maps/dir/?api=1&destination=CRCG%2BM4+Ajeetgarh" target="_blank" class="flex-1 flex flex-col items-center group">
-            <i class="fas fa-location-arrow text-orange-400 group-hover:text-orange-300 text-xl"></i>
-            <span class="text-[10px] uppercase mt-1 font-bold">DIRECTIONS</span>
+            <i class="fas fa-location-arrow text-orange-400 group-hover:text-orange-300 text-lg md:text-xl"></i>
+            <span class="text-[8px] md:text-[10px] uppercase mt-0.5 font-bold">MAP</span>
         </a>
         <a href="#booking" class="flex-1 flex flex-col items-center group">
-            <i class="fas fa-calendar-check text-yellow-400 group-hover:text-yellow-300 text-xl"></i>
-            <span class="text-[10px] uppercase mt-1 font-bold">BOOK</span>
+            <i class="fas fa-calendar-check text-yellow-400 group-hover:text-yellow-300 text-lg md:text-xl"></i>
+            <span class="text-[8px] md:text-[10px] uppercase mt-0.5 font-bold">BOOK</span>
         </a>
     </div>
 
-    <!-- Tawk.to Script (SAME) -->
+    <!-- Tawk.to Script -->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
@@ -603,6 +616,13 @@
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
+    </script>
+
+    <!-- ADDED: Mobile menu toggle script -->
+    <script>
+    function closeMobileMenu() {
+        document.getElementById('mobile-menu').classList.add('hidden');
+    }
     </script>
 
     <script src="script.js"></script>
