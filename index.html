@@ -1,1 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Narayan Palace | 4.3★ Premium Stay & Restaurant Ajeetgarh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 text-slate-900 font-sans">
 
+    <!-- Enhanced Navigation with Gradient -->
+    <nav class="bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 backdrop-blur-md shadow-lg p-4 sticky top-0 z-50 flex justify-between items-center px-6 md:px-12">
+        <div class="flex items-center gap-3">
+            <div class="bg-white p-2 rounded-lg text-orange-600 shadow-lg transform hover:rotate-12 transition">
+                <i class="fas fa-palace text-xl"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-black text-white leading-none">NARAYAN PALACE</h1>
+                <p class="text-[10px] font-bold text-yellow-200 tracking-widest uppercase">Since 2010 · 3-Star Hotel</p>
+            </div>
+        </div>
+        <div class="hidden md:flex gap-8 font-semibold text-sm uppercase tracking-wide text-white">
+            <a href="#home" class="hover:text-yellow-200 transition relative group">Home<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-200 group-hover:w-full transition-all"></span></a>
+            <a href="#rooms" class="hover:text-yellow-200 transition relative group">Stay<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-200 group-hover:w-full transition-all"></span></a>
+            <a href="#dining" class="hover:text-yellow-200 transition relative group">Dining<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-200 group-hover:w-full transition-all"></span></a>
+            <a href="#reviews" class="hover:text-yellow-200 transition relative group">Reviews<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-200 group-hover:w-full transition-all"></span></a>
+            <a href="#contact" class="hover:text-yellow-200 transition relative group">Location<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-200 group-hover:w-full transition-all"></span></a>
+        </div>
+        <a href="tel:+919950119140" class="bg-white text-orange-600 px-6 py-2.5 rounded-full text-sm font-bold shadow-lg hover:bg-yellow-400 hover:text-red-700 transition-all animate-pulse-gold flex items-center gap-2">
+            <i class="fas fa-phone-alt bg-orange-600 text-white p-1 rounded-full text-xs"></i>RESERVE NOW
+        </a>
+    </nav>
+
+    <!-- Hero Section with Gradient Overlay -->
+    <section id="home" class="relative h-[90vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-red-900/70 via-orange-800/60 to-amber-900/70 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?q=80&w=2000&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover scale-105 animate-slow-zoom" alt="Hotel Narayan Palace Exterior">
+        
+        <div class="relative z-20 text-center text-white px-6 max-w-5xl mx-auto">
+            <span class="bg-gradient-to-r from-yellow-400 to-amber-500 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest mb-6 inline-block shadow-lg animate-bounce-slow">⭐ 4.3 ★ (677 Google Reviews) ⭐</span>
+            <h2 class="text-5xl md:text-7xl font-black mb-6 leading-tight drop-shadow-2xl">Where Luxury Meets<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-200">Rajputana Hospitality</span></h2>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-95 font-light drop-shadow-lg">Free WiFi · Swimming Pool · Free Parking · 24/7 Restaurant · Near Bus Stand Ajeetgarh</p>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="#rooms" class="bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 px-10 py-4 rounded-xl font-bold hover:from-white hover:to-yellow-200 transition-all shadow-2xl transform hover:scale-105">🛏️ Check Rooms & Prices</a>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=27.403928,75.7543091" target="_blank" class="bg-white/20 backdrop-blur-md text-white px-10 py-4 rounded-xl font-bold flex items-center justify-center gap-3 shadow-2xl border-2 border-white/30 hover:bg-white/30 transition transform hover:scale-105">
+                    <i class="fas fa-location-dot text-yellow-300"></i> Get Directions
+                </a>
+            </div>
+            <!-- Price Comparison Flash -->
+            <div class="mt-12 flex flex-wrap gap-4 justify-center">
+                <span class="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm border border-white/20"><i class="fas fa-tag text-yellow-300"></i> MakeMyTrip ₹1,188</span>
+                <span class="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm border border-white/20"><i class="fas fa-tag text-yellow-300"></i> Agoda ₹1,482</span>
+                <span class="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm border border-white/20"><i class="fas fa-calendar-check text-yellow-300"></i> Free Cancellation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Amenities Bar with Gradient Cards -->
+    <section class="py-12 bg-gradient-to-r from-red-50 via-orange-50 to-amber-50">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4 px-6">
+            <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-orange-500">
+                <i class="fas fa-swimming-pool text-4xl text-blue-500 mb-3"></i>
+                <h4 class="font-bold text-sm">Swimming Pool</h4>
+                <p class="text-xs text-gray-500">Open 7am-8pm</p>
+            </div>
+            <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-green-500">
+                <i class="fas fa-wifi text-4xl text-purple-500 mb-3"></i>
+                <h4 class="font-bold text-sm">Free Wi-Fi</h4>
+                <p class="text-xs text-gray-500">High Speed</p>
+            </div>
+            <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-red-500">
+                <i class="fas fa-utensils text-4xl text-orange-600 mb-3"></i>
+                <h4 class="font-bold text-sm">Paid Breakfast</h4>
+                <p class="text-xs text-gray-500">7am-10am</p>
+            </div>
+            <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-yellow-500">
+                <i class="fas fa-pump-soap text-4xl text-green-600 mb-3"></i>
+                <h4 class="font-bold text-sm">Laundry</h4>
+                <p class="text-xs text-gray-500">Same Day</p>
+            </div>
+            <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 border-b-4 border-indigo-500">
+                <i class="fas fa-shield-alt text-4xl text-indigo-600 mb-3"></i>
+                <h4 class="font-bold text-sm">CCTV Secure</h4>
+                <p class="text-xs text-gray-500">24/7 Safety</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Rooms Section with Gradient -->
+    <section id="rooms" class="py-24 px-6 bg-gradient-to-b from-white to-orange-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-2 rounded-full text-sm font-bold inline-block mb-4">🛌 LUXURY STAYS</span>
+                <h3 class="text-4xl md:text-5xl font-black text-slate-800 mb-4">Premium Accommodations</h3>
+                <p class="text-xl text-orange-600 font-semibold">Starting from ₹1,188/night · Free cancellation available</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Deluxe Room -->
+                <div class="room-card bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-orange-100 transform hover:-translate-y-3 transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">FREE CANCELLATION</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="text-2xl font-bold">Deluxe AC Room</h4>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">4.3 ★</span>
+                        </div>
+                        <p class="text-slate-500 text-sm mb-4"><i class="fas fa-tv text-orange-500 mr-1"></i> Smart LED · <i class="fas fa-bath text-orange-500 mr-1"></i> Attached Bath · <i class="fas fa-wind text-orange-500 mr-1"></i> AC</p>
+                        <div class="bg-orange-50 p-4 rounded-xl mb-4">
+                            <div class="flex justify-between items-center text-sm">
+                                <span>MakeMyTrip</span>
+                                <span class="font-black text-lg">₹1,188</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm mt-2">
+                                <span>Agoda</span>
+                                <span class="font-black text-lg">₹1,482</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-black text-orange-600">₹1,188<small class="text-sm text-gray-400 font-normal">/night</small></span>
+                            <button onclick="bookViaWA('Deluxe AC Room')" class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 rounded-xl font-bold hover:from-orange-700 hover:to-red-700 transition shadow-lg flex items-center gap-2">
+                                <i class="fab fa-whatsapp"></i> Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Super Deluxe -->
+                <div class="room-card bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-orange-100 transform hover:-translate-y-3 transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4df85b?q=80&w=800" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-bold">BEST VIEW</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="text-2xl font-bold">Super Deluxe</h4>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">4.6 ★</span>
+                        </div>
+                        <p class="text-slate-500 text-sm mb-4"><i class="fas fa-mountain text-orange-500 mr-1"></i> Valley View · <i class="fas fa-bed text-orange-500 mr-1"></i> King Bed · <i class="fas fa-coffee text-orange-500 mr-1"></i> Tea Maker</p>
+                        <div class="bg-orange-50 p-4 rounded-xl mb-4">
+                            <div class="flex justify-between items-center text-sm">
+                                <span>MakeMyTrip</span>
+                                <span class="font-black text-lg">₹1,999</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm mt-2">
+                                <span>Agoda</span>
+                                <span class="font-black text-lg">₹2,199</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-black text-orange-600">₹1,999<small class="text-sm text-gray-400 font-normal">/night</small></span>
+                            <button onclick="bookViaWA('Super Deluxe Room')" class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 rounded-xl font-bold hover:from-orange-700 hover:to-red-700 transition shadow-lg flex items-center gap-2">
+                                <i class="fab fa-whatsapp"></i> Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Suite -->
+                <div class="room-card bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-orange-100 transform hover:-translate-y-3 transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=800" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold">FAMILY PACK</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="text-2xl font-bold">Family Suite</h4>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">4.8 ★</span>
+                        </div>
+                        <p class="text-slate-500 text-sm mb-4"><i class="fas fa-users text-orange-500 mr-1"></i> 4 Adults · <i class="fas fa-door-open text-orange-500 mr-1"></i> 2 Rooms · <i class="fas fa-utensils text-orange-500 mr-1"></i> Dining Area</p>
+                        <div class="bg-orange-50 p-4 rounded-xl mb-4">
+                            <div class="flex justify-between items-center text-sm">
+                                <span>MakeMyTrip</span>
+                                <span class="font-black text-lg">₹2,999</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm mt-2">
+                                <span>Agoda</span>
+                                <span class="font-black text-lg">₹3,199</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-black text-orange-600">₹2,999<small class="text-sm text-gray-400 font-normal">/night</small></span>
+                            <button onclick="bookViaWA('Family Suite')" class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 rounded-xl font-bold hover:from-orange-700 hover:to-red-700 transition shadow-lg flex items-center gap-2">
+                                <i class="fab fa-whatsapp"></i> Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Price Note -->
+            <p class="text-center mt-8 text-sm text-gray-500"><i class="fas fa-info-circle text-orange-500"></i> Prices are indicative. Final price may vary based on seasonality.</p>
+        </div>
+    </section>
+
+    <!-- New Dining Section with Gradient Cards -->
+    <section id="dining" class="py-24 px-6 bg-gradient-to-br from-red-50 via-orange-50 to-amber-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-2 rounded-full text-sm font-bold inline-block mb-4">🍽️ 24/7 RESTAURANT</span>
+                <h3 class="text-4xl md:text-5xl font-black text-slate-800 mb-4">Pure Veg & Jain Food Available</h3>
+                <p class="text-xl text-green-600 font-semibold">Breakfast 7am-10am · Lunch 12pm-3pm · Dinner 7pm-11pm</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="group bg-white p-4 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=400" class="rounded-2xl mb-4 h-48 w-full object-cover group-hover:scale-105 transition duration-500">
+                    <h5 class="font-bold text-lg">Special Thali</h5>
+                    <p class="text-orange-600 font-black text-xl">₹180</p>
+                    <p class="text-xs text-gray-500">5 Roti + Dal + Rice + Sabzi</p>
+                </div>
+                <div class="group bg-white p-4 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=400" class="rounded-2xl mb-4 h-48 w-full object-cover group-hover:scale-105 transition duration-500">
+                    <h5 class="font-bold text-lg">Paneer Butter Masala</h5>
+                    <p class="text-orange-600 font-black text-xl">₹220</p>
+                    <p class="text-xs text-gray-500">Creamy & Rich</p>
+                </div>
+                <div class="group bg-white p-4 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1585937421612-70a0f2455f75?q=80&w=400" class="rounded-2xl mb-4 h-48 w-full object-cover group-hover:scale-105 transition duration-500">
+                    <h5 class="font-bold text-lg">Dal Tadka</h5>
+                    <p class="text-orange-600 font-black text-xl">₹140</p>
+                    <p class="text-xs text-gray-500">Tempered with Ghee</p>
+                </div>
+                <div class="group bg-white p-4 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400" class="rounded-2xl mb-4 h-48 w-full object-cover group-hover:scale-105 transition duration-500">
+                    <h5 class="font-bold text-lg">Veg Pizza</h5>
+                    <p class="text-orange-600 font-black text-xl">₹299</p>
+                    <p class="text-xs text-gray-500">Cheese Burst</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Reviews Section with Stars -->
+    <section id="reviews" class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h3 class="text-4xl font-black text-slate-800 mb-4">What Our Guests Say</h3>
+                <div class="flex items-center justify-center gap-2 text-3xl text-yellow-400 mb-2">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    <span class="text-2xl text-slate-700 ml-2">4.3 · 677 Google Reviews</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-3xl shadow-lg border border-orange-100">
+                    <div class="flex text-yellow-400 text-xl mb-4">★★★★★</div>
+                    <p class="text-lg italic">"Very clean rooms and excellent service. Near bus stand so very convenient. The staff was very helpful."</p>
+                    <div class="mt-4 flex items-center gap-3">
+                        <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xl">R</div>
+                        <div>
+                            <p class="font-bold">Ramesh Kumar</p>
+                            <p class="text-sm text-gray-500">Feb 2025 · Family</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-3xl shadow-lg border border-orange-100">
+                    <div class="flex text-yellow-400 text-xl mb-4">★★★★☆</div>
+                    <p class="text-lg italic">"Pool was clean and well maintained. The breakfast was good. Will visit again."</p>
+                    <div class="mt-4 flex items-center gap-3">
+                        <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xl">P</div>
+                        <div>
+                            <p class="font-bold">Priya Sharma</p>
+                            <p class="text-sm text-gray-500">Jan 2025 · Couple</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-3xl shadow-lg border border-orange-100">
+                    <div class="flex text-yellow-400 text-xl mb-4">★★★★★</div>
+                    <p class="text-lg italic">"Best hotel in Ajeetgarh. Free parking and WiFi both worked great. Highly recommended!"</p>
+                    <div class="mt-4 flex items-center gap-3">
+                        <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xl">A</div>
+                        <div>
+                            <p class="font-bold">Amit Singh</p>
+                            <p class="text-sm text-gray-500">Mar 2025 · Business</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-6 bg-gradient-to-br from-orange-50 to-red-50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-2 rounded-full text-sm font-bold inline-block mb-4">❓ QUERY SOLVED</span>
+                <h3 class="text-4xl font-black text-slate-800 mb-4">Frequently Asked Questions</h3>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <button class="faq-btn w-full text-left p-6 font-bold text-lg flex justify-between items-center hover:bg-orange-50 transition">
+                        <span><i class="fas fa-clock text-orange-600 mr-3"></i>What are check-in and check-out times?</span>
+                        <i class="fas fa-chevron-down text-orange-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        Check-in is from 12:00 PM onwards. Check-out is by 12:00 PM. Early check-in and late check-out subject to availability.
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <button class="faq-btn w-full text-left p-6 font-bold text-lg flex justify-between items-center hover:bg-orange-50 transition">
+                        <span><i class="fas fa-car text-orange-600 mr-3"></i>Is parking available?</span>
+                        <i class="fas fa-chevron-down text-orange-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        Yes, we offer free private parking for all our guests. The parking area is CCTV secured.
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <button class="faq-btn w-full text-left p-6 font-bold text-lg flex justify-between items-center hover:bg-orange-50 transition">
+                        <span><i class="fas fa-utensils text-orange-600 mr-3"></i>Do you serve breakfast?</span>
+                        <i class="fas fa-chevron-down text-orange-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        Yes, we offer paid breakfast from 7:00 AM to 10:00 AM. Both Indian and Continental options available.
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <button class="faq-btn w-full text-left p-6 font-bold text-lg flex justify-between items-center hover:bg-orange-50 transition">
+                        <span><i class="fas fa-wifi text-orange-600 mr-3"></i>Is WiFi free for guests?</span>
+                        <i class="fas fa-chevron-down text-orange-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        Absolutely! We provide complimentary high-speed WiFi to all our guests throughout the property.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Booking Form with Gradient -->
+    <section id="booking" class="py-20 bg-gradient-to-r from-orange-600 to-red-600 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white/10 backdrop-blur-lg p-8 rounded-3xl shadow-2xl border-2 border-white/20">
+                <h3 class="text-3xl font-black text-center text-white mb-6">📋 Quick Enquiry / Booking</h3>
+                <form id="bookingForm" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" id="custName" placeholder="Your Full Name *" class="w-full p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white placeholder-white/70 focus:outline-none focus:border-yellow-300" required>
+                        <input type="tel" id="custPhone" placeholder="Mobile Number *" class="w-full p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white placeholder-white/70 focus:outline-none focus:border-yellow-300" required>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="date" id="checkIn" class="w-full p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white focus:outline-none focus:border-yellow-300">
+                        <input type="date" id="checkOut" class="w-full p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white focus:outline-none focus:border-yellow-300">
+                    </div>
+                    <select id="roomType" class="w-full p-4 rounded-xl border-2 border-white/30 bg-white/20 text-white focus:outline-none focus:border-yellow-300">
+                        <option value="" class="text-gray-800">Select Room Type</option>
+                        <option value="Deluxe" class="text-gray-800">Deluxe AC Room</option>
+                        <option value="Super Deluxe" class="text-gray-800">Super Deluxe</option>
+                        <option value="Family Suite" class="text-gray-800">Family Suite</option>
+                    </select>
+                    <button type="submit" class="w-full bg-yellow-400 text-orange-800 font-bold py-4 rounded-xl hover:bg-yellow-300 transition shadow-lg text-lg transform hover:scale-105">
+                        <i class="fas fa-paper-plane mr-2"></i> Submit Enquiry
+                    </button>
+                </form>
+                <p id="successMsg" class="text-green-300 font-bold text-center mt-4 hidden text-sm bg-green-900/30 p-3 rounded-xl">✓ Thank you! We'll contact you within 5 minutes on WhatsApp.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer with Map -->
+    <footer id="contact" class="bg-gradient-to-b from-slate-900 to-slate-800 text-white py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <h4 class="font-black text-3xl mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">NARAYAN PALACE</h4>
+                    <p class="text-gray-300 text-lg mb-6">Shahpura Rd, near Bus Stand, Ajeetgarh, Rajasthan 332701</p>
+                    <div class="space-y-3">
+                        <p class="flex items-center gap-3"><i class="fas fa-phone-alt text-orange-400 w-6"></i> <a href="tel:+919950119140" class="hover:text-orange-400">099501 19140</a></p>
+                        <p class="flex items-center gap-3"><i class="fas fa-envelope text-orange-400 w-6"></i> <a href="mailto:info@hotelnarayanpalace.com" class="hover:text-orange-400">info@hotelnarayanpalace.com</a></p>
+                        <p class="flex items-center gap-3"><i class="fas fa-clock text-orange-400 w-6"></i> Check-in: 12:00 PM · Check-out: 12:00 PM</p>
+                        <p class="flex items-center gap-3"><i class="fas fa-globe text-orange-400 w-6"></i> <a href="https://hnpajitgarh.com" target="_blank" class="hover:text-orange-400">hnpajitgarh.com</a></p>
+                    </div>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-700 transition transform hover:scale-110"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-700 transition transform hover:scale-110"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center hover:bg-orange-700 transition transform hover:scale-110"><i class="fab fa-whatsapp text-xl"></i></a>
+                    </div>
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-2xl h-96 border-4 border-orange-600/30">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3539.065561339121!2d75.7521204!3d27.403928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396da78fbf1a5dad%3A0x39d400208bb996ea!2z4KS54KWL4KSf4KSyIOCkueCksOClhyDgpJXgpY3gpLDgpL3gpY3gpIcg4KSP4KSC4KShIOCkq-Clh-CkruCkv-CksuClgCDgpLDgpYfgpLjgpY3gpJ_gpYvgpLDgpYfgpK_gpJ_gpYAg4KSm4KS_4KS14KSw4KS-4KSy4KS-!5e0!3m2!1shi!2sin!4v1740660000000!5m2!1shi!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>© 2025 Hotel Narayan Palace. All rights reserved. | Designed for Premium Experience</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enhanced Mobile Bottom Bar -->
+    <div class="fixed bottom-6 left-4 right-4 h-16 bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl shadow-2xl flex items-center justify-between px-4 z-50 md:hidden border border-white/20 text-white backdrop-blur-lg">
+        <a href="tel:+919950119140" class="flex-1 flex flex-col items-center group">
+            <i class="fas fa-phone-alt text-green-400 group-hover:text-green-300 text-xl"></i>
+            <span class="text-[10px] uppercase mt-1 font-bold">CALL</span>
+        </a>
+        <a href="https://wa.me/919950119140" class="flex-1 flex flex-col items-center group">
+            <i class="fab fa-whatsapp text-green-400 group-hover:text-green-300 text-xl"></i>
+            <span class="text-[10px] uppercase mt-1 font-bold">WHATSAPP</span>
+        </a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=27.403928,75.7543091" target="_blank" class="flex-1 flex flex-col items-center group">
+            <i class="fas fa-location-arrow text-orange-400 group-hover:text-orange-300 text-xl"></i>
+            <span class="text-[10px] uppercase mt-1 font-bold">DIRECTIONS</span>
+        </a>
+        <a href="#booking" class="flex-1 flex flex-col items-center group">
+            <i class="fas fa-calendar-check text-yellow-400 group-hover:text-yellow-300 text-xl"></i>
+            <span class="text-[10px] uppercase mt-1 font-bold">BOOK</span>
+        </a>
+    </div>
+
+    <!-- Tawk.to Script -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/69a115cc4afa321c34c79325/1jiel9oma';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

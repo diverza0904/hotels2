@@ -1,0 +1,281 @@
+/* Root Variables for Branding */
+:root {
+    --primary-orange: #f26522;
+    --primary-red: #dc2626;
+    --primary-amber: #f59e0b;
+    --dark-slate: #0f172a;
+    --pure-veg-green: #22c55e;
+    --glass-white: rgba(255, 255, 255, 0.9);
+}
+
+/* Smooth Scrolling & Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Custom Animations */
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes bounceSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseGold {
+    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+.animate-slow-zoom {
+    animation: slowZoom 20s infinite;
+}
+
+.animate-bounce-slow {
+    animation: bounceSlow 3s infinite;
+}
+
+.animate-pulse-gold {
+    animation: pulseGold 2s infinite;
+}
+
+/* Room Card Hover Effects */
+.room-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.room-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px -15px rgba(242, 101, 34, 0.3);
+}
+
+.room-card:hover img {
+    filter: brightness(1.1);
+    transition: filter 0.5s ease;
+}
+
+/* Food Card Hover Effect */
+.group:hover img {
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
+}
+
+/* FAQ Button Styles */
+.faq-btn i {
+    transition: transform 0.3s ease;
+}
+
+.faq-btn.active i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    transition: all 0.3s ease;
+}
+
+/* Mobile Bottom Bar */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 80px;
+    }
+    
+    .fixed.bottom-6 {
+        bottom: 20px;
+    }
+}
+
+/* Map Container */
+iframe {
+    filter: grayscale(0.2) contrast(1.1);
+    transition: filter 0.3s ease;
+}
+
+iframe:hover {
+    filter: grayscale(0) contrast(1);
+}
+
+/* Form Input Styling */
+input::placeholder, select::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.7;
+}
+
+/* Tawk.to Chat Widget */
+iframe#tawk-chat-widget {
+    bottom: 90px !important;
+    z-index: 40 !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff5e6;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #f26522, #dc2626);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #dc2626, #991b1b);
+}
+
+/* Navigation Link Hover Effect */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fbbf24;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Price Comparison Styling */
+.price-comparison {
+    background: linear-gradient(135deg, #fff5e6 0%, #fff 100%);
+    border: 1px solid #ffedd5;
+}
+
+/* Review Card Hover */
+.review-card {
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px -15px rgba(242, 101, 34, 0.2);
+}
+
+/* Loading Spinner */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Success Message Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#successMsg:not(.hidden) {
+    animation: slideIn 0.5s ease;
+}
+
+/* Responsive Text Adjustments */
+@media (max-width: 640px) {
+    h2 {
+        font-size: 2rem !important;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5rem !important;
+    }
+}
+
+/* Glassmorphism Effects */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Button Hover Effects */
+.btn-hover-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hover-effect::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-hover-effect:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Image Gallery Hover */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+}
+
+.gallery-item:hover::before {
+    left: 100%;
+}
+
+/* Rating Badge Pulse */
+.rating-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
