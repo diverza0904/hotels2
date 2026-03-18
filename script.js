@@ -1,41 +1,99 @@
-// Hotel Narayan Palace - Main JavaScript File
+// Hotel Narayan Palace - Complete JavaScript File
 
+// ==================== CONFIGURATION ====================
+const HOTEL_CONFIG = {
+    phone: "919950119140", // Owner's WhatsApp number
+    hotelName: "Hotel Narayan Palace",
+    address: "Shahpura Rd, near Bus Stand, Ajeetgarh, Rajasthan 332701",
+    coordinates: "27.403928,75.7543091",
+    plusCode: "CRCG+M4 Ajeetgarh"
+};
+
+// ==================== DOCUMENT READY ====================
 document.addEventListener('DOMContentLoaded', () => {
-
-    // ==================== CONFIGURATION ====================
-    const HOTEL_CONFIG = {
-        phone: "919950119140", // Owner's WhatsApp number
-        hotelName: "Hotel Narayan Palace",
-        address: "Shahpura Rd, near Bus Stand, Ajeetgarh, Rajasthan 332701",
-        coordinates: "27.403928,75.7543091"
-    };
 
     // ==================== GLOBAL FUNCTIONS ====================
     
     // WhatsApp Booking Function (Global)
     window.bookViaWA = function(roomName) {
         const currentDate = new Date().toLocaleDateString('en-IN');
+        const currentTime = new Date().toLocaleTimeString('en-IN');
         const message = `*NEW BOOKING REQUEST - HOTEL NARAYAN PALACE*%0A%0A` +
                         `🏨 *Room:* ${roomName}%0A` +
                         `📅 *Date:* ${currentDate}%0A` +
-                        `📍 *Location:* Ajeetgarh Bus Stand%0A%0A` +
+                        `⏰ *Time:* ${currentTime}%0A` +
+                        `📍 *Location:* ${HOTEL_CONFIG.plusCode}%0A` +
+                        `📌 *Address:* ${HOTEL_CONFIG.address}%0A%0A` +
                         `Please confirm availability and best price.`;
         
         const waUrl = `https://wa.me/${HOTEL_CONFIG.phone}?text=${message}`;
         window.open(waUrl, '_blank');
+        
+        // Track booking click
+        console.log('Booking initiated for:', roomName);
+        
+        // Add haptic feedback for mobile
+        if (navigator.vibrate) {
+            navigator.vibrate(50);
+        }
     };
+
+    // ==================== MOBILE MENU TOGGLE ====================
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('hidden');
+            
+            // Change icon based on menu state
+            const icon = this.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.className = 'fas fa-bars';
+            } else {
+                icon.className = 'fas fa-times';
+            }
+        });
+    }
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
+                }
+            }
+        }
+    });
+    
+    // Close mobile menu when clicking on a link
+    if (mobileMenu) {
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
+                }
+            });
+        });
+    }
 
     // ==================== NAVIGATION SCROLL EFFECT ====================
     const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.classList.add('shadow-lg', 'py-2');
-            nav.classList.remove('py-4');
-        } else {
-            nav.classList.remove('shadow-lg', 'py-2');
-            nav.classList.add('py-4');
-        }
-    });
+    if (nav) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg', 'py-2');
+                nav.classList.remove('py-3', 'py-4');
+            } else {
+                nav.classList.remove('shadow-lg', 'py-2');
+                nav.classList.add('py-3');
+            }
+        });
+    }
 
     // ==================== SMOOTH SCROLL FOR ANCHOR LINKS ====================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -46,9 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                
+                const offset = 80; // Height of fixed header
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
@@ -69,6 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (answer.classList.contains('hidden')) {
                 answer.classList.remove('hidden');
                 this.querySelector('i').style.transform = 'rotate(180deg)';
+                
+                // Smooth scroll to show the answer
+                setTimeout(() => {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
             } else {
                 answer.classList.add('hidden');
                 this.querySelector('i').style.transform = 'rotate(0deg)';
@@ -77,14 +144,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==================== SCROLL REVEAL ANIMATIONS ====================
-    const revealElements = document.querySelectorAll('.room-card, .group, .review-card, .amenity-card');
+    const revealElements = document.querySelectorAll('.room-card, .group, .review-card, .amenity-card, .location-card');
     
     const revealOnScroll = () => {
         revealElements.forEach(element => {
             const elementTop = element.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
+            const revealPoint = 100;
             
-            if (elementTop < windowHeight - 100) {
+            if (elementTop < windowHeight - revealPoint) {
                 element.style.opacity = '1';
                 element.style.transform = 'translateY(0)';
             }
@@ -101,10 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Trigger once on load
 
-    // ==================== MOBILE MENU TOGGLE ====================
-    // Note: You can add a hamburger menu button in HTML if needed
-    // This is a placeholder for future mobile menu functionality
-    
     // ==================== FORM SUBMISSION HANDLER ====================
     const bookingForm = document.getElementById('bookingForm');
     const successMsg = document.getElementById('successMsg');
@@ -114,8 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             // Get form values
-            const name = document.getElementById('custName')?.value;
-            const phone = document.getElementById('custPhone')?.value;
+            const name = document.getElementById('custName')?.value.trim();
+            const phone = document.getElementById('custPhone')?.value.trim();
             const checkIn = document.getElementById('checkIn')?.value;
             const checkOut = document.getElementById('checkOut')?.value;
             const roomType = document.getElementById('roomType')?.value;
@@ -127,7 +191,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             if (phone.length < 10) {
-                alert('कृपया सही मोबाइल नंबर दर्ज करें');
+                alert('कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें');
+                return;
+            }
+            
+            if (!/^\d{10}$/.test(phone)) {
+                alert('कृपया केवल अंकों में मोबाइल नंबर दर्ज करें');
                 return;
             }
             
@@ -138,14 +207,16 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
             
             try {
-                // Prepare WhatsApp message
+                // Prepare WhatsApp message with all details
+                const currentDate = new Date().toLocaleString('en-IN');
                 const message = `*🏨 NEW ENQUIRY - HOTEL NARAYAN PALACE*%0A%0A` +
                     `👤 *Name:* ${name}%0A` +
                     `📞 *Phone:* ${phone}%0A` +
                     `📅 *Check-in:* ${checkIn || 'Not specified'}%0A` +
                     `📅 *Check-out:* ${checkOut || 'Not specified'}%0A` +
-                    `🛏️ *Room Type:* ${roomType || 'Not specified'}%0A%0A` +
-                    `⏰ *Time:* ${new Date().toLocaleString('en-IN')}`;
+                    `🛏️ *Room Type:* ${roomType || 'Not specified'}%0A` +
+                    `📍 *Location:* ${HOTEL_CONFIG.plusCode}%0A%0A` +
+                    `⏰ *Submitted:* ${currentDate}`;
                 
                 // Open WhatsApp with the message
                 setTimeout(() => {
@@ -163,9 +234,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 5000);
                 }
                 
+                // Track form submission
+                console.log('Form submitted successfully');
+                
             } catch (error) {
                 console.error('Error:', error);
-                alert('कुछ गलती हुई है। कृपया सीधे कॉल करें।');
+                alert('कुछ गलती हुई है। कृपया सीधे कॉल करें: 099501 19140');
             } finally {
                 // Reset button
                 submitBtn.innerHTML = originalText;
@@ -173,6 +247,52 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ==================== COPY ADDRESS FUNCTIONALITY ====================
+    const fullAddress = `${HOTEL_CONFIG.plusCode}, ${HOTEL_CONFIG.address}`;
+    
+    // Add copy buttons to location sections
+    const addCopyButtons = () => {
+        const locationElements = document.querySelectorAll('.location-plus-code, [class*="CRCG"], .font-mono.text-orange-400, .text-orange-600.font-mono');
+        
+        locationElements.forEach(el => {
+            // Avoid adding multiple buttons
+            if (el.closest('button') || el.querySelector('.copy-address-btn')) return;
+            
+            const wrapper = document.createElement('div');
+            wrapper.className = 'flex items-center gap-2';
+            
+            // Move the element into wrapper
+            el.parentNode.insertBefore(wrapper, el);
+            wrapper.appendChild(el);
+            
+            // Add copy button
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'copy-address-btn';
+            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+            copyBtn.setAttribute('aria-label', 'Copy address');
+            
+            copyBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navigator.clipboard.writeText(fullAddress).then(() => {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy:', err);
+                    alert('Address: ' + fullAddress);
+                });
+            });
+            
+            wrapper.appendChild(copyBtn);
+        });
+    };
+    
+    // Call after a short delay to ensure DOM is ready
+    setTimeout(addCopyButtons, 500);
 
     // ==================== PRICE COMPARISON HOVER EFFECT ====================
     const priceBoxes = document.querySelectorAll('.bg-orange-50');
@@ -194,61 +314,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==================== IMAGE LAZY LOADING ====================
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.add('loaded');
-                observer.unobserve(img);
-            }
-        });
+    const images = document.querySelectorAll('img:not([loading])');
+    images.forEach(img => {
+        img.setAttribute('loading', 'lazy');
     });
     
-    images.forEach(img => imageObserver.observe(img));
+    // Advanced lazy loading for data-src images
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    if (lazyImages.length > 0) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+        
+        lazyImages.forEach(img => imageObserver.observe(img));
+    }
 
     // ==================== GOOGLE MAPS DIRECTIONS ====================
     window.getDirections = function() {
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const destination = encodeURIComponent(HOTEL_CONFIG.plusCode);
         
         if (isMobile) {
+            // Try to open Google Maps app
             window.location.href = `google.navigation:q=${HOTEL_CONFIG.coordinates}&mode=d`;
+            
+            // Fallback to web after a delay
+            setTimeout(() => {
+                window.open(`https://www.google.com/maps/dir/?api=1&destination=${HOTEL_CONFIG.coordinates}`, '_blank');
+            }, 500);
         } else {
-            window.open(`https://www.google.com/maps/dir/?api=1&destination=${HOTEL_CONFIG.coordinates}`, '_blank');
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${destination}`, '_blank');
         }
     };
-
-    // ==================== COPY CONTACT NUMBER ====================
-    const phoneNumbers = document.querySelectorAll('[data-copy-phone]');
-    phoneNumbers.forEach(elem => {
-        elem.addEventListener('click', function() {
-            navigator.clipboard.writeText(HOTEL_CONFIG.phone).then(() => {
-                // Show temporary tooltip
-                const tooltip = document.createElement('div');
-                tooltip.textContent = 'Number copied!';
-                tooltip.style.cssText = `
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    background: #10b981;
-                    color: white;
-                    padding: 10px 20px;
-                    border-radius: 50px;
-                    font-size: 14px;
-                    z-index: 9999;
-                    animation: fadeOut 2s forwards;
-                `;
-                
-                document.body.appendChild(tooltip);
-                
-                setTimeout(() => {
-                    tooltip.remove();
-                }, 2000);
-            });
-        });
-    });
 
     // ==================== ACTIVE NAVIGATION HIGHLIGHT ====================
     const sections = document.querySelectorAll('section[id]');
@@ -266,10 +372,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        document.querySelectorAll('nav a').forEach(link => {
-            link.classList.remove('text-yellow-200');
+        document.querySelectorAll('nav a, #mobile-menu a').forEach(link => {
+            link.classList.remove('text-yellow-200', 'font-bold', 'bg-orange-600');
+            
             if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('text-yellow-200');
+                if (link.closest('nav')) {
+                    link.classList.add('text-yellow-200');
+                } else if (link.closest('#mobile-menu')) {
+                    link.classList.add('bg-orange-600', 'text-white');
+                }
             }
         });
     });
@@ -278,24 +389,102 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookButtons = document.querySelectorAll('[onclick^="bookViaWA"]');
     bookButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Track booking clicks (can be integrated with analytics)
+            // Track booking clicks
             console.log('Booking clicked:', this.innerText);
             
-            // Add haptic feedback for mobile
-            if (navigator.vibrate) {
-                navigator.vibrate(50);
+            // Google Analytics event tracking (if available)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'booking_click', {
+                    'event_category': 'engagement',
+                    'event_label': this.innerText
+                });
             }
         });
     });
 
-    // ==================== INITIALIZE ANY THIRD-PARTY INTEGRATIONS ====================
-    console.log('Hotel Narayan Palace website initialized successfully!');
+    // ==================== FIX FOR BOTTOM BAR ON KEYBOARD OPEN (MOBILE) ====================
+    if ('visualViewport' in window) {
+        window.visualViewport.addEventListener('resize', function() {
+            const bottomBar = document.querySelector('.fixed.bottom-4');
+            if (bottomBar) {
+                // Hide bottom bar when keyboard is open (viewport height reduced)
+                if (window.visualViewport.height < window.innerHeight * 0.8) {
+                    bottomBar.style.display = 'none';
+                } else {
+                    bottomBar.style.display = 'flex';
+                }
+            }
+        });
+    }
+
+    // ==================== LOADING STATE FOR ALL FORMS ====================
+    const allForms = document.querySelectorAll('form');
+    allForms.forEach(form => {
+        form.addEventListener('submit', function() {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            if (submitBtn && !submitBtn.disabled) {
+                // Auto-enable after 10 seconds in case something goes wrong
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                }, 10000);
+            }
+        });
+    });
+
+    // ==================== TOUCH DEVICE OPTIMIZATIONS ====================
+    if ('ontouchstart' in window) {
+        document.body.classList.add('touch-device');
+        
+        // Add haptic feedback for buttons on touch devices
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('touchstart', function() {
+                if (navigator.vibrate) {
+                    navigator.vibrate(10);
+                }
+            });
+        });
+    }
+
+    // ==================== SCROLL TO TOP BUTTON (if needed) ====================
+    const createScrollTopBtn = () => {
+        const btn = document.createElement('button');
+        btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        btn.className = 'fixed bottom-20 right-4 bg-orange-600 text-white w-10 h-10 rounded-full shadow-lg hidden z-50 hover:bg-orange-700 transition';
+        btn.setAttribute('aria-label', 'Scroll to top');
+        
+        btn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        document.body.appendChild(btn);
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                btn.classList.remove('hidden');
+            } else {
+                btn.classList.add('hidden');
+            }
+        });
+    };
+    
+    // Uncomment if you want scroll to top button
+    // createScrollTopBtn();
+
+    // ==================== INITIALIZATION COMPLETE ====================
+    console.log('✅ Hotel Narayan Palace website initialized successfully!');
+    console.log('📍 Location:', HOTEL_CONFIG.plusCode);
+    console.log('📞 Phone:', HOTEL_CONFIG.phone);
 });
 
 // ==================== ERROR HANDLING ====================
 window.addEventListener('error', function(e) {
-    console.error('Website error:', e.message);
+    console.error('Website error:', e.message, 'at', e.filename, 'line', e.lineno);
+    
     // You can send this to an error tracking service
+    // Example: sendErrorToServer(e.message, e.filename, e.lineno);
 });
 
 // ==================== PERFORMANCE MARKING ====================
@@ -303,6 +492,40 @@ window.addEventListener('load', function() {
     if (window.performance) {
         const perfData = window.performance.timing;
         const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-        console.log(`Page load time: ${pageLoadTime}ms`);
+        console.log(`⏱️ Page load time: ${pageLoadTime}ms`);
+        
+        // Report slow loading (more than 3 seconds)
+        if (pageLoadTime > 3000) {
+            console.warn('⚠️ Page loading is slow. Consider optimizing images.');
+        }
     }
 });
+
+// ==================== NETWORK STATUS ====================
+window.addEventListener('online', () => {
+    console.log('🌐 Network is online');
+    // Show notification if needed
+});
+
+window.addEventListener('offline', () => {
+    console.log('📴 Network is offline');
+    // Show offline notification
+    const offlineMsg = document.createElement('div');
+    offlineMsg.className = 'fixed top-20 left-4 right-4 bg-red-600 text-white text-center p-2 rounded-lg z-50';
+    offlineMsg.textContent = 'You are offline. Please check your internet connection.';
+    document.body.appendChild(offlineMsg);
+    
+    setTimeout(() => {
+        offlineMsg.remove();
+    }, 3000);
+});
+
+// ==================== EXPORT FUNCTIONS FOR GLOBAL USE ====================
+// These functions are already global, but we'll ensure they're available
+window.bookViaWA = window.bookViaWA || function(roomName) {
+    console.warn('bookViaWA function not fully initialized yet');
+};
+
+window.getDirections = window.getDirections || function() {
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=CRCG%2BM4+Ajeetgarh`, '_blank');
+};
